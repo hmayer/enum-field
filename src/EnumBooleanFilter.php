@@ -1,12 +1,13 @@
 <?php
 
-namespace Suleymanozev\EnumField;
+namespace Hmayer\EnumField;
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Laravel\Nova\Filters\BooleanFilter;
 use Laravel\Nova\Nova;
+use UnitEnum;
 
 class EnumBooleanFilter extends BooleanFilter
 {
@@ -48,7 +49,7 @@ class EnumBooleanFilter extends BooleanFilter
         if (!empty($this->default)) {
             $this->default = collect($this->default)
                 ->map(function ($value, $key) {
-                    return $value instanceof \UnitEnum ? $value->value : $value;
+                    return $value instanceof UnitEnum ? $value->value : $value;
                 })->all();
         }
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace Suleymanozev\EnumField;
+namespace Hmayer\EnumField;
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;

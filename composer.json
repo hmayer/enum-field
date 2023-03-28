@@ -1,6 +1,7 @@
 {
-    "name": "suleymanozev/enum-field",
-    "description": "A Laravel Nova field.",
+    "name": "hmayer/enum-field",
+    "type": "library",
+    "description": "A Laravel Nova field for PHP Enum classes.",
     "keywords": [
         "laravel",
         "nova",
@@ -9,14 +10,11 @@
     "license": "MIT",
     "require": {
         "php": ">=8.1.0",
-        "illuminate/database": "^9.0",
-        "illuminate/support": "^9.0",
-        "illuminate/http": "^9.0",
-        "laravel/nova": "^3.0 | ^4.0"
+        "laravel/nova": "^4.0"
     },
     "autoload": {
         "psr-4": {
-            "Suleymanozev\\EnumField\\": "src/"
+            "Hmayer\\EnumField\\": "src/"
         }
     },
     "extra": {

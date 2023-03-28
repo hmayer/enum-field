@@ -1,18 +1,25 @@
 <?php
 
-namespace Suleymanozev\EnumField;
+namespace Hmayer\EnumField;
 
 use Laravel\Nova\Fields\Select;
 use Laravel\Nova\Http\Requests\NovaRequest;
+use Illuminate\Validation\Rules\Enum as EnumRules;
+use UnitEnum;
 
 class Enum extends Select
 {
+    /**
+     * @var array|EnumRules[]
+     */
+    private array $rules;
+
     public function __construct($name, $attribute = null, callable $resolveCallback = null)
     {
         parent::__construct($name, $attribute, $resolveCallback);
         $this->resolveUsing(
             function ($value) {
-                return $value instanceof \UnitEnum ? $value->value : $value;
+                return $value instanceof UnitEnum ? $value->value : $value;
             }
         );
 
@@ -31,19 +38,19 @@ class Enum extends Select
 
         $this->displayUsing(
             function ($value) use ($class) {
-                if ($value instanceof \UnitEnum) {
-                    return $value->name;
+                if ($value instanceof UnitEnum) {
+                    return __($value->name);
                 }
 
                 $parsedValue = $class::tryFrom($value);
-                if ($parsedValue instanceof \UnitEnum) {
-                    return $parsedValue->name;
+                if ($parsedValue instanceof UnitEnum) {
+                    return __($parsedValue->name);
                 }
-                return $value;
+                return __($value);
             }
         );
 
-        $this->rules = [new \Illuminate\Validation\Rules\Enum($class)];
+        $this->rules = [new EnumRules($class)];
         return $this;
     }
 }

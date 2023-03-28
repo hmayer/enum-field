@@ -1,12 +1,15 @@
 # Laravel Nova Enum Field
 
-Nova field for enum in PHP 8.1 and above
+Nova field for enum in PHP 8.1 and above.
+
+I try to keep the same `suleymanozev/enum-field` interface, but with some additions to my personal needs.
+
 ## Installation
 
 You can install this package in a Laravel app that uses [Nova](https://nova.laravel.com) via composer:
 
 ```bash
-composer require suleymanozev/enum-field
+composer require hmayer/enum-field
 ```
 
 ## Setup
@@ -106,9 +109,10 @@ class Example extends Resource
 ```
 
 ## Credits
-- [Süleyman ÖZEV](https://github.com/suleymanozev)
+- [Henrique Mayer](https://github.com/hmayer)
 
 ## Thanks
+* [Süleyman ÖZEV](https://github.com/suleymanozev)
 * [simplesquid/nova-enum-field](https://github.com/simplesquid/nova-enum-field)
 
 ## License
