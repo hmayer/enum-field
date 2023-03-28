@@ -12,7 +12,7 @@ class Enum extends Select
     /**
      * @var array|EnumRules[]
      */
-    private array $rules;
+    public array $rules;
 
     public function __construct($name, $attribute = null, callable $resolveCallback = null)
     {
