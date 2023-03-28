@@ -7,13 +7,12 @@ use Laravel\Nova\Http\Requests\NovaRequest;
 use Illuminate\Validation\Rules\Enum as EnumRules;
 use UnitEnum;
 
+
+/**
+ * @property $rules EnumRules[]
+ */
 class Enum extends Select
 {
-    /**
-     * @var array|EnumRules[]
-     */
-    public array $rules;
-
     public function __construct($name, $attribute = null, callable $resolveCallback = null)
     {
         parent::__construct($name, $attribute, $resolveCallback);
@@ -34,19 +33,25 @@ class Enum extends Select
     }
     public function attach($class): static
     {
-        $this->options(collect($class::cases())->pluck('name', 'value'));
+        $this->options(
+            collect($class::cases())
+                ->pluck('name', 'value')
+                ->map(function ($option) {
+                    return __($option);
+                })
+        );
 
         $this->displayUsing(
             function ($value) use ($class) {
                 if ($value instanceof UnitEnum) {
-                    return __($value->name);
+                    return $value->name;
                 }
 
                 $parsedValue = $class::tryFrom($value);
                 if ($parsedValue instanceof UnitEnum) {
-                    return __($parsedValue->name);
+                    return $parsedValue->name;
                 }
-                return __($value);
+                return $value;
             }
         );
 
