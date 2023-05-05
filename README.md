@@ -34,7 +34,7 @@ You can use the `Enum` field in your Nova resource like this:
 namespace App\Nova;
 
 use App\Enums\UserType;
-use Suleymanozev\EnumField\Enum;
+use Hmayer\EnumField\Enum;
 
 class Example extends Resource
 {
@@ -62,7 +62,7 @@ namespace App\Nova;
 
 use App\Enums\UserPermissions;
 use App\Enums\UserType;
-use Suleymanozev\EnumField\EnumFilter;
+use Hmayer\EnumField\EnumFilter;
 
 class Example extends Resource
 {
@@ -87,7 +87,7 @@ namespace App\Nova;
 
 use App\Enums\UserPermissions;
 use App\Enums\UserType;
-use Suleymanozev\EnumField\EnumBooleanFilter;
+use Hmayer\EnumField\EnumBooleanFilter;
 
 class Example extends Resource
 {
